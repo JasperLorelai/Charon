@@ -1,0 +1,6 @@
+name: Charon
+version: "1.0"
+website: "https://github.com/JasperLorelai/Charon"
+author: JasperLorelai
+main: com.jasperlorelai.Charon
+depend: [MagicSpells]
