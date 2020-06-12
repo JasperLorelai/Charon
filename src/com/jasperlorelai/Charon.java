@@ -215,7 +215,7 @@ public class Charon extends JavaPlugin implements Listener {
                 }
                 info("+ " + key);
                 boolean override = SpellEffect.addEffect(key, effect);
-                if (override) warn("MagicSpells spell effect '" + key + "' was overridden.");
+                if (!override) warn("MagicSpells spell effect '" + key + "' was overridden.");
             }
             info("... done");
         }
