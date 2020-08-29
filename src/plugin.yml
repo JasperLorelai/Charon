@@ -1,6 +1,7 @@
 name: Charon
-version: "1.0"
+version: "2.0"
 website: "https://github.com/JasperLorelai/Charon"
 author: JasperLorelai
-main: com.jasperlorelai.Charon
-depend: [MagicSpells]
+main: com.jasperlorelai.charon.Charon
+api-version: "1.13"
+load: STARTUP

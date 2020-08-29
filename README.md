@@ -22,3 +22,16 @@ The only exception to this is naming conditions in MagicSpells. In order to use 
 modifiers:
     - "addon:sneaking require"
 ```
+
+### API:
+If you are using the API in your plugin, these methods are available for you.
+```
+CharonAPI#addCondition
+CharonAPI#addListener
+CharonAPI#addVariable
+CharonAPI#addEffect
+```
+ After adding these modules, execute this.
+```
+CharonAPI.reloadMagicSpells();
+```
