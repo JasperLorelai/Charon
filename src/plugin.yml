@@ -1,7 +1,0 @@
-name: Charon
-version: "2.0"
-website: "https://github.com/JasperLorelai/Charon"
-author: JasperLorelai
-main: com.jasperlorelai.charon.Charon
-api-version: "1.13"
-load: STARTUP
