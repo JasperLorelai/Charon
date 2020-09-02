@@ -24,6 +24,7 @@ public class Config {
 	private static final Charon plugin = Charon.getPlugin();
 	private static final File DATA_FOLDER = plugin.getDataFolder();
 
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static void loadConfiguration() {
 		// Create configuration if it doesn't exist.
 		Charon.getPlugin().getDataFolder().mkdir();
@@ -75,7 +76,7 @@ public class Config {
 				// Try Loading class.
 				Condition condition;
 				try {
-					condition = classLoader.loadClass(value).asSubclass(Condition.class).newInstance();
+					condition = (Condition) classLoader.loadClass(value).getDeclaredConstructor().newInstance();
 				} catch (ClassNotFoundException e) {
 					Charon.error("Failed to load condition '" + key + ":" + value + "'! (missing class)");
 					continue;
@@ -100,7 +101,7 @@ public class Config {
 				// Try Loading class.
 				PassiveListener listener;
 				try {
-					listener = classLoader.loadClass(value).asSubclass(PassiveListener.class).newInstance();
+					listener = (PassiveListener) getClass(classLoader, value);
 				} catch (ClassNotFoundException e) {
 					Charon.error("Failed to load listener '" + key + ":" + value + "'! (missing class)");
 					continue;
@@ -124,7 +125,7 @@ public class Config {
 				// Try Loading class.
 				Variable variable;
 				try {
-					variable = classLoader.loadClass(value).asSubclass(Variable.class).newInstance();
+					variable = (Variable) getClass(classLoader, value);
 				} catch (ClassNotFoundException e) {
 					Charon.error("Failed to load variable '" + key + ":" + value + "'! (missing class)");
 					continue;
@@ -148,7 +149,7 @@ public class Config {
 				// Try Loading class.
 				SpellEffect effect;
 				try {
-					effect = classLoader.loadClass(value).asSubclass(SpellEffect.class).newInstance();
+					effect = (SpellEffect) getClass(classLoader, value);
 				} catch (ClassNotFoundException e) {
 					Charon.error("Failed to load effect '" + key + ":" + value + "'! (missing class)");
 					continue;
@@ -179,6 +180,10 @@ public class Config {
 		}
 		catch (MalformedURLException ignored) {}
 		return cl;
+	}
+
+	private static Object getClass(ClassLoader classLoader, String className) throws Exception {
+		return classLoader.loadClass(className).getDeclaredConstructor().newInstance();
 	}
 
 }
