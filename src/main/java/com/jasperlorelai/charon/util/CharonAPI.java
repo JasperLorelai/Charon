@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import com.jasperlorelai.charon.Charon;
+
 import com.nisovin.magicspells.MagicSpells;
 import com.nisovin.magicspells.variables.Variable;
 import com.nisovin.magicspells.castmodifiers.Condition;

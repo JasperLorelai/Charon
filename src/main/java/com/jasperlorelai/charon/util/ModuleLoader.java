@@ -4,12 +4,13 @@ import java.util.Map;
 import java.util.HashMap;
 
 import com.jasperlorelai.charon.Charon;
+
 import com.nisovin.magicspells.MagicSpells;
-import com.nisovin.magicspells.castmodifiers.ProxyCondition;
-import com.nisovin.magicspells.spells.passive.PassiveTrigger;
 import com.nisovin.magicspells.variables.Variable;
 import com.nisovin.magicspells.castmodifiers.Condition;
 import com.nisovin.magicspells.spelleffects.SpellEffect;
+import com.nisovin.magicspells.castmodifiers.ProxyCondition;
+import com.nisovin.magicspells.spells.passive.PassiveTrigger;
 import com.nisovin.magicspells.spells.passive.PassiveListener;
 
 public class ModuleLoader {
