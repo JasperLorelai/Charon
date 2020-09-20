@@ -69,10 +69,12 @@ public class ModuleLoader {
 			Charon.info("Loading PassiveSpell listeners...");
 			for (Map.Entry<String, PassiveListener> entry : LISTENERS.entrySet()) {
 				Charon.info("+ " + entry.getKey());
-				PassiveTrigger override = PassiveTrigger.getByName(entry.getKey());
+				PassiveTrigger oldTrigger = PassiveTrigger.getByName(entry.getKey());
 				PassiveTrigger.addTriggers(entry.getKey(), entry.getValue().getClass());
-				if (override == null) continue;
-				Charon.warn("Passive trigger '" + override.getName() + "' was overridden.");
+
+				if (oldTrigger == null) continue;
+				if (oldTrigger.getClass().getName().equals(entry.getValue().getClass().getName())) continue;
+				Charon.warn("Passive trigger '" + oldTrigger.getName() + "' was overridden.");
 			}
 			Charon.info("... done");
 		}
@@ -82,8 +84,11 @@ public class ModuleLoader {
 			Charon.info("Loading Variables...");
 			for (Map.Entry<String, Variable> entry : VARIABLES.entrySet()) {
 				Charon.info("+ " + entry.getKey());
-				boolean override = MagicSpells.getVariableManager().addVariable(entry.getKey(), entry.getValue());
-				if (!override) continue;
+				Variable oldVariable = MagicSpells.getVariableManager().getVariable(entry.getKey());
+				MagicSpells.getVariableManager().addVariable(entry.getKey(), entry.getValue());
+
+				if (oldVariable == null) continue;
+				if (oldVariable.getClass().getName().equals(entry.getValue().getClass().getName())) continue;
 				Charon.warn("MagicSpells variable '" + entry.getKey() + "' was overridden.");
 			}
 			Charon.info("... done");
@@ -94,8 +99,11 @@ public class ModuleLoader {
 			Charon.info("Loading internal MS effects...");
 			for (Map.Entry<String, SpellEffect> entry : EFFECTS.entrySet()) {
 				Charon.info("+ " + entry.getKey());
-				boolean override = SpellEffect.addEffect(entry.getKey(), entry.getValue().getClass());
-				if (!override) continue;
+				Class<? extends SpellEffect> oldEffect = SpellEffect.getEffects().get(entry.getKey());
+				SpellEffect.addEffect(entry.getKey(), entry.getValue().getClass());
+
+				if (oldEffect == null) continue;
+				if (oldEffect.getName().equals(entry.getValue().getClass().getName())) continue;
 				Charon.warn("MagicSpells spell effect '" + entry.getKey() + "' was overridden.");
 			}
 			Charon.info("... done");
