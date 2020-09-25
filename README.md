@@ -5,10 +5,10 @@
 
 This plugin is a dev tool for the [MagicSpells](https://github.com/TheComputerGeek2/MagicSpells/) plugin.
 
-When testing new **modifiers**, **spell effects**, **variables** or PassiveSpell **listeners**, you no longer have to code them directly into MagicSpells, build the plugin, and restart the server while debugging them. This tool loads jars into MagicSpells whenever MagicSpells reloads.
+When testing new **modifiers**, **spell effects** or PassiveSpell **listeners**, you no longer have to code them directly into MagicSpells, build the plugin, and restart the server while debugging them. This tool loads jars into MagicSpells whenever MagicSpells reloads.
 
 ### Configuration:
-In `config.yml` there are four maps: `conditions`, `listeners`, `variables`, and `effects`.
+In `config.yml` there are four maps: `conditions`, `listeners`, and `effects`.
 
 The key of each map should be how the class should be named in MagicSpells configuration, while the value should be the qualified name for the class.
 
@@ -28,7 +28,6 @@ If you are using the API in your plugin, these methods are available for you.
 ```
 CharonAPI#addCondition
 CharonAPI#addListener
-CharonAPI#addVariable
 CharonAPI#addEffect
 ```
  After adding these modules, execute this.
