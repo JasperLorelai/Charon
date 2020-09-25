@@ -12,7 +12,7 @@
 
     <groupId>com.jasperlorelai</groupId>
     <artifactId>Charon</artifactId>
-    <version>v3.1</version>
+    <version>v3.2</version>
 
     <repositories>
         <repository>
