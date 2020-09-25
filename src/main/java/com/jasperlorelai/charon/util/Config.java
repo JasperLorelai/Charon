@@ -14,7 +14,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.configuration.InvalidConfigurationException;
 
-import com.nisovin.magicspells.variables.Variable;
 import com.nisovin.magicspells.castmodifiers.Condition;
 import com.nisovin.magicspells.spelleffects.SpellEffect;
 import com.nisovin.magicspells.spells.passive.PassiveListener;
@@ -46,16 +45,14 @@ public class Config {
 
 		ConfigurationSection conditions = config.getConfigurationSection("conditions");
 		ConfigurationSection listneres = config.getConfigurationSection("listeners");
-		ConfigurationSection variables = config.getConfigurationSection("variables");
 		ConfigurationSection effects = config.getConfigurationSection("effects");
 
 		boolean hasConditions = !(conditions == null || conditions.getKeys(false).isEmpty());
 		boolean hasListeners = !(listneres == null || listneres.getKeys(false).isEmpty());
-		boolean hasVariables = !(variables == null || variables.getKeys(false).isEmpty());
 		boolean hasEffects = !(effects == null || effects.getKeys(false).isEmpty());
 
 		// If configuration is empty, stop.
-		if (!(hasConditions || hasListeners || hasVariables || hasEffects)) return;
+		if (!(hasConditions || hasListeners || hasEffects)) return;
 
 		Charon.info("Loading configuration...");
 
@@ -111,30 +108,6 @@ public class Config {
 					continue;
 				}
 				ModuleLoader.addListener(key, listener);
-			}
-		}
-
-		if (hasVariables) {
-			for (String key : variables.getKeys(false)) {
-				if (key == null) continue;
-				if (key.isEmpty()) continue;
-				String value = variables.getString(key);
-				if (value == null) continue;
-				if (value.isEmpty()) continue;
-
-				// Try Loading class.
-				Variable variable;
-				try {
-					variable = (Variable) getClass(classLoader, value);
-				} catch (ClassNotFoundException e) {
-					Charon.error("Failed to load variable '" + key + ":" + value + "'! (missing class)");
-					continue;
-				} catch (Exception e) {
-					Charon.error("Failed to load variable '" + key + ":" + value + "'! (general error)");
-					e.printStackTrace();
-					continue;
-				}
-				ModuleLoader.addVariable(key, variable);
 			}
 		}
 

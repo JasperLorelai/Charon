@@ -15,13 +15,11 @@ public class CharonAPI {
 
 	private static final Map<String, Condition> CONDITIONS = new HashMap<>();
 	private static final Map<String, PassiveListener> LISTENERS = new HashMap<>();
-	private static final Map<String, Variable> VARIABLES = new HashMap<>();
 	private static final Map<String, SpellEffect> EFFECTS = new HashMap<>();
 
 	public static void clear() {
 		CONDITIONS.clear();
 		LISTENERS.clear();
-		VARIABLES.clear();
 		EFFECTS.clear();
 	}
 
@@ -33,8 +31,12 @@ public class CharonAPI {
 		LISTENERS.put(name, listener);
 	}
 
+	/**
+	 * This method was removed because there is no
+	 * way to add custom variables in MagicSpells 3.6.
+	 */
+	@Deprecated
 	public static void addVariable(String name, Variable variable) {
-		VARIABLES.put(name, variable);
 	}
 
 	public static void addEffect(String name, SpellEffect effect) {
@@ -48,9 +50,6 @@ public class CharonAPI {
 		for (Map.Entry<String, PassiveListener> entry : LISTENERS.entrySet()) {
 			ModuleLoader.addListener(entry.getKey(), entry.getValue());
 		}
-		for (Map.Entry<String, Variable> entry : VARIABLES.entrySet()) {
-			ModuleLoader.addVariable(entry.getKey(), entry.getValue());
-		}
 		for (Map.Entry<String, SpellEffect> entry : EFFECTS.entrySet()) {
 			ModuleLoader.addEffect(entry.getKey(), entry.getValue());
 		}
@@ -60,8 +59,8 @@ public class CharonAPI {
 		MagicSpells plugin = MagicSpells.getInstance();
 		if (plugin == null) return false;
 		Charon.info("API methods were used after MS reloaded. Reloading MagicSpells again to apply changes.");
-		plugin.unload();
-		plugin.load();
+		plugin.onDisable();
+		plugin.onEnable();
 		return true;
 	}
 

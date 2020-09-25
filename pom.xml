@@ -25,16 +25,16 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.1-R0.1-SNAPSHOT</version>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.nisovin.magicspells</groupId>
             <artifactId>MagicSpells</artifactId>
-            <version>4.0 beta 7</version>
+            <version>3.6</version>
             <scope>system</scope>
-            <systemPath>${pom.basedir}/libs/MagicSpells-4.0-Beta-7.jar</systemPath>
+            <systemPath>${pom.basedir}/libs/MagicSpells.jar</systemPath>
         </dependency>
     </dependencies>
 
