@@ -1,5 +1,7 @@
 # Charon
 
+### This branch is exclusively for MagicSpells 3.x.
+
 **Downloads:** 
 [![**Downloads:** ](https://img.shields.io/github/downloads/JasperLorelai/Charon/total.svg)](https://github.com/JasperLorelai/Charon/releases)
 
