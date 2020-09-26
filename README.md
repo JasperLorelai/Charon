@@ -5,6 +5,14 @@
 
 This plugin is a dev tool for the [MagicSpells](https://github.com/TheComputerGeek2/MagicSpells/) plugin.
 
+### IMPORTANT
+
+The main branch is exclusively for MagicSpells 4.0 beta (through beta 6).
+
+**This project has been discontinued** from that point on due to MagicSpells API improvements.
+
+### Description
+
 When testing new **modifiers**, **spell effects**, **variables** or PassiveSpell **listeners**, you no longer have to code them directly into MagicSpells, build the plugin, and restart the server while debugging them. This tool loads jars into MagicSpells whenever MagicSpells reloads.
 
 ### Configuration:
