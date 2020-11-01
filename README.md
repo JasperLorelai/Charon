@@ -7,7 +7,7 @@ This plugin is a dev tool for the [MagicSpells](https://github.com/TheComputerGe
 
 ### IMPORTANT
 
-The main branch is exclusively for MagicSpells 4.0 beta (through beta 6). **This project has been discontinued** from that point on due to MagicSpells API improvements. However, you can check out [this resource](https://gist.github.com/JasperLorelai/94365a36e503c8c41a6fe80f5729a62a) instead.
+The main branch is exclusively for MagicSpells 4.0 beta (through beta 6). **This project has been discontinued** from that point on due to MagicSpells API improvements. However, you can check out [this resource](https://gist.github.com/JasperLorelai/4ea62ae3fb6f648c5108cfacbbe193a8) instead.
 
 ### Description
 
